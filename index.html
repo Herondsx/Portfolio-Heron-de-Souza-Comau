@@ -4,11 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio de Projetos | Heron de Souza</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Icons / Charts / 3D -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -16,8 +24,7 @@
     <header class="header">
       <div class="header-inner">
         <div class="brand">
-          <img src="Imagens-Portfolios/Logo.png" alt="Logo Comau" class="logo-img">
-          
+          <img src="Imagens-Portfolios/Logo.png" alt="Logo Comau" class="logo-img" onerror="this.style.display='none'">
           <div>
             <h1 class="title">PORTFÓLIO DE PROJETOS</h1>
             <div class="title-meta">
@@ -26,10 +33,11 @@
             </div>
           </div>
         </div>
+
         <div class="brand-info">
           <span class="brand-sub">COMAU</span>
           <span class="brand-subtle">Automation Systems</span>
-          <span class="brand-version">v.2.4.0</span>
+          <span class="brand-version">v.3.6.0</span>
         </div>
       </div>
     </header>
@@ -39,20 +47,24 @@
         <div class="intro-text">
           <h2>Painel de <span class="highlight">Execução</span></h2>
           <p>
-            Aqui estão reunidas as soluções de engenharia que desenvolvi para otimizar nossos processos de simulação e gestão. São ferramentas focadas em resolver os desafios reais do nosso dia a dia na Comau.
+            Aqui estão reunidas as soluções de engenharia que desenvolvi para otimizar nossos processos de simulação e gestão.
+            Ferramentas focadas em resolver desafios reais do dia a dia na Comau, visando eficiência e precisão.
           </p>
+
           <div class="stack">
-            <span class="stack-item"><span data-lucide="database"></span>Comau Tools</span>
+            <span class="stack-item"><span data-lucide="database" width="14"></span>Comau Tools</span>
             <span class="stack-divider">|</span>
-            <span class="stack-item"><span data-lucide="cpu"></span>Process Simulate</span>
+            <span class="stack-item"><span data-lucide="cpu" width="14"></span>Process Simulate</span>
             <span class="stack-divider">|</span>
-            <span class="stack-item"><span data-lucide="box"></span>Web Apps</span>
+            <span class="stack-item"><span data-lucide="box" width="14"></span>Web Apps</span>
           </div>
         </div>
+
         <div class="filters">
           <button class="filter-btn active" data-filter="all">Todos</button>
           <button class="filter-btn" data-filter="completed">Concluídos</button>
           <button class="filter-btn" data-filter="ongoing">Em andamento</button>
+          <button class="filter-btn" data-filter="suggestion">Sugestões Futuras</button>
         </div>
       </section>
 
@@ -62,105 +74,161 @@
     </main>
   </div>
 
+  <!-- MODAL -->
   <div class="modal" id="projectModal" aria-hidden="true">
     <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card">
+
+    <div class="modal-card" id="modalCard">
       <div class="modal-header">
         <div>
           <div class="modal-meta">
             <span id="modalCategory" class="pill"></span>
-            <span id="modalStatus" class="status-chip"></span>
+            <span id="modalStatus" class="status-badge"></span>
           </div>
+
           <h2 id="modalTitle" class="modal-title"></h2>
+
           <div class="client-tech">
-            <span class="client" id="modalClient"><span data-lucide="layers"></span></span>
+            <span class="client" id="modalClient"><span data-lucide="layers" width="14"></span></span>
             <span class="client-divider">|</span>
             <div class="tech-chips" id="modalTech"></div>
           </div>
         </div>
+
         <button id="modalClose" class="icon-button" type="button" aria-label="Fechar modal">
           <span data-lucide="x"></span>
         </button>
       </div>
 
-      <div class="modal-body">
-        <div class="modal-left">
-          <section>
-            <h3 class="section-title"><span data-lucide="activity"></span>Visão técnica</h3>
-            <p id="modalDetails" class="modal-text"></p>
-          </section>
+      <div class="view-content">
+        <!-- STANDARD VIEW -->
+        <div id="standardView" class="standard-view">
+          <div class="modal-left">
+            <section>
+              <h3 class="section-title"><span data-lucide="activity" width="16"></span>Benefícios &amp; Visão Técnica</h3>
+              <p id="modalDetails" class="modal-text"></p>
+            </section>
 
-          <section>
-            <div class="section-header">
-              <h3 class="section-title"><span data-lucide="bar-chart-3"></span>Minhas entregas &amp; subtasks</h3>
-              <span id="modalTaskSummary" class="task-summary"></span>
-            </div>
-            <div id="modalTasks" class="task-list"></div>
-          </section>
+            <section>
+              <div class="section-header">
+                <h3 class="section-title"><span data-lucide="zap" width="16"></span>Próximos Updates (Roadmap)</h3>
+              </div>
+              <div class="updates-box" id="modalUpdates"></div>
+            </section>
 
-          <div class="comment-box">
-            <div class="comment-icon">
-              <span data-lucide="message-square-quote"></span>
+            <section>
+              <div class="section-header">
+                <h3 class="section-title"><span data-lucide="bar-chart-3" width="16"></span>Entregas Realizadas</h3>
+                <span id="modalTaskSummary" class="task-summary"></span>
+              </div>
+              <div id="modalTasks" class="task-list"></div>
+            </section>
+
+            <div class="comment-box">
+              <div class="comment-icon">
+                <span data-lucide="message-square-quote"></span>
+              </div>
+              <div>
+                <h4 class="comment-title">Nota do Desenvolvedor</h4>
+                <p id="modalComment" class="comment-text"></p>
+              </div>
             </div>
-            <div>
-              <h4>Meu comentário técnico</h4>
-              <p id="modalComment" class="modal-text italic"></p>
-            </div>
+          </div>
+
+          <div class="modal-right">
+            <section>
+              <h3 class="section-title"><span data-lucide="play" width="16"></span>Demonstração</h3>
+
+              <div class="video-container" id="modalVideoContainer">
+                <video id="modalVideo" controls muted autoplay loop playsinline preload="metadata">
+                  <source id="modalVideoSource" src="" type="video/mp4">
+                </video>
+
+                <div class="card-video-badge">
+                  <span data-lucide="play" width="12"></span> Preview
+                </div>
+              </div>
+
+              <div class="video-empty" id="modalVideoEmpty" hidden>
+                <span data-lucide="image"></span>
+                <div>Sem vídeo neste item</div>
+              </div>
+            </section>
+
+            <section id="benchmarkSection" hidden>
+              <button id="benchmarkToggle" class="btn-benchmark" type="button">
+                <div class="btn-content">
+                  <div class="btn-icon-box">
+                    <span data-lucide="bar-chart-2"></span>
+                  </div>
+                  <div class="btn-text">
+                    <div class="btn-title">Performance Analytics</div>
+                    <div class="btn-sub">Visualizar Dados &amp; ROI</div>
+                  </div>
+                </div>
+                <div class="bench-chevron">
+                  <span data-lucide="maximize-2"></span>
+                </div>
+              </button>
+            </section>
           </div>
         </div>
 
-        <div class="modal-right">
-          <!-- VIDEO SECTION -->
-          <section>
-            <h3 class="section-title"><span data-lucide="play"></span>Demonstração da Ferramenta</h3>
+        <!-- ANALYTICS VIEW -->
+        <div id="analyticsView" class="analytics-view">
+          <div class="analytics-toolbar">
+            <button id="backToStandard" class="btn-back" type="button">
+              <span data-lucide="arrow-left" width="16"></span>
+              <span>Voltar</span>
+            </button>
 
-            <div class="video-container" id="videoContainer">
-              <video
-                id="modalVideo"
-                controls
-                muted
-                autoplay
-                loop
-                playsinline
-                preload="metadata"
-              >
-                <source id="modalVideoSource" src="" type="video/mp4">
-                Seu navegador não suporta vídeos.
-              </video>
+            <div id="analyticsTitle" class="analytics-title">Performance Analytics</div>
 
-              <div class="video-preview-badge" id="modalVideoBadge">
-                <span data-lucide="play" width="14"></span> Preview
+            <div id="analyticsLabel" class="analytics-label" aria-label="Status do benchmark">
+              <span class="analytics-live-dot" aria-hidden="true"></span>
+              LIVE BENCHMARK
+            </div>
+          </div>
+
+          <div class="analytics-dashboard">
+            <div class="dash-card visual-panel">
+              <div id="canvas3DContainer" class="visual-3d-canvas"></div>
+              <div class="visual-overlay">
+                <div class="visual-title">Comparativo de Fluxo</div>
+                <div class="visual-subtitle">
+                  <span style="color:#FF3B30">● Manual</span> &nbsp; vs &nbsp;
+                  <span style="color:#34C759">● Ferramenta</span>
+                </div>
               </div>
             </div>
-          </section>
 
-          <!-- BENCHMARK SECTION -->
-          <section id="benchmarkSection" hidden>
-            <div class="bench-btn-container">
-              <button
-                id="benchmarkToggle"
-                class="btn-benchmark"
-                type="button"
-                aria-expanded="false"
-              >
-                <div class="btn-content">
-                  <div class="btn-icon-box">
-                    <span data-lucide="trending-down"></span>
-                  </div>
-                  <div class="btn-text">
-                    <div class="btn-title">Ver Análise de Performance</div>
-                    <div class="btn-sub">Comparativo: Manual vs App</div>
-                  </div>
-                </div>
+            <div class="kpi-stack">
+              <div class="kpi-card">
+                <span class="kpi-lbl">Economia Estimada</span>
+                <span class="kpi-val" id="kpiSaving" style="color:#34C759">--</span>
+                <div class="kpi-icon"><span data-lucide="piggy-bank"></span></div>
+              </div>
 
-                <div class="bench-chevron" aria-hidden="true">
-                  <span data-lucide="arrow-right"></span>
-                </div>
-              </button>
+              <div class="kpi-card">
+                <span class="kpi-lbl">ROI / Velocidade</span>
+                <span class="kpi-val" id="kpiRoi" style="color:#0046ad">--</span>
+                <div class="kpi-icon"><span data-lucide="trending-up"></span></div>
+              </div>
             </div>
 
-            <div id="benchmarkDetails" class="analytics-wrapper" hidden></div>
-          </section>
+            <div class="dash-card chart-panel">
+              <div class="chart-header">
+                <div class="chart-title">
+                  <span data-lucide="bar-chart-2" width="18" style="color:#CC0605"></span>
+                  <span id="chartVolumeLabel">Volume Comparativo (Tempo em Minutos)</span>
+                </div>
+              </div>
+
+              <div class="chart-container-inner">
+                <canvas id="performanceChart"></canvas>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
