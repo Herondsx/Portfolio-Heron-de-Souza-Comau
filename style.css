@@ -876,3 +876,48 @@ body {
     height: 14px;
   }
 }
+
+/* ===========================
+   PATCH: Benefícios em evidência (modalDetails)
+   =========================== */
+
+.modal-text { color: var(--text-secondary); }
+
+.modal-text strong {
+  font-weight: 900;
+}
+
+.modal-text .benefits-title {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  opacity: 0.85;
+}
+
+.modal-text ul {
+  margin: 10px 0 0 18px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.modal-text li {
+  line-height: 1.55;
+  color: var(--text-primary);
+  font-weight: 650;
+}
+
+.modal-text .benefit-blue { color: var(--comau-blue); }
+.modal-text .benefit-red { color: var(--comau-red); }
+.modal-text .benefit-purple { color: var(--purple-suggestion); }
+
+.modal-text .note {
+  margin-top: 10px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-secondary);
+}
