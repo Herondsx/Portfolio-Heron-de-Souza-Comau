@@ -11,8 +11,20 @@ const projectsData = [
     progress: 100,
     tech: ["C#", "WPF", "Algoritmos", "Excel"],
     description: "Leitor avançado de backups de robôs para extração, comparação e análise profunda de pontos de solda.",
-    details:
-      "Desenvolvi esta ferramenta para ler backups brutos ou arquivos isolados (.pdl/.var/.tp), extraindo os pontos de solda e apresentando-os em um Grid. Programei toda a lógica de tracking dos pontos do carro comparando com a tabela nominal do cliente, cálculo de Deltas e geração de relatórios precisos em Excel. Implementei também um visualizador 3D nativo.",
+    details: `
+      O <strong class="benefit-blue">WeldScanner</strong> é uma ferramenta desenvolvida para ler backups brutos (.pdl/.var/.tp) e transformar os dados em informação acionável.
+      Ele extrai pontos de solda, compara automaticamente com a tabela nominal do cliente e gera deltas com rastreabilidade.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-blue">Reduz drasticamente o tempo</strong> de leitura e validação de backups.</li>
+        <li><strong class="benefit-blue">Elimina erro humano</strong> na comparação nominal vs. real (deltas consistentes).</li>
+        <li><strong class="benefit-blue">Gera relatórios Excel</strong> prontos para auditoria e tomada de decisão.</li>
+        <li><strong class="benefit-blue">Inclui visualização 3D</strong> para inspeção rápida e validação técnica.</li>
+      </ul>
+
+      <div class="note">Resultado: mais velocidade com precisão na validação do processo.</div>
+    `,
     myComment:
       "Este foi o maior e mais complexo projeto que fiz até agora. A capacidade de fazer uma análise profunda das tabelas nominais versus backups e gerar deltas precisos em Excel trouxe um ganho enorme de produtividade.",
     videoUrl: "Imagens-Portfolios/WeldScanner.mp4",
@@ -44,8 +56,19 @@ const projectsData = [
     progress: 35,
     tech: ["HTML/CSS/JS", "Mobile", "Blazor"],
     description: "Plataforma Web para o gerenciamento do ciclo de vida de projetos na engenharia.",
-    details:
-      "Estou construindo este sistema para centralizar informações iniciais, gestão de dispositivos, marcos do projeto (Milestones) e dashboards. O foco é permitir a liberação de dispositivos para simulação. Comecei em HTML/JS e planejo a migração para Blazor.",
+    details: `
+      A <strong class="benefit-blue">Central de Gestão</strong> é uma plataforma web criada para centralizar informações do ciclo de vida dos projetos,
+      status de dispositivos e marcos (milestones), reduzindo ruídos de comunicação entre áreas.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-blue">Aumenta a visibilidade</strong> do status do projeto em um único lugar.</li>
+        <li><strong class="benefit-red">Reduz gargalos</strong> na liberação de dados/dispositivos para simulação.</li>
+        <li><strong class="benefit-blue">Diminui reuniões de alinhamento</strong> com status sempre atualizado.</li>
+      </ul>
+
+      <div class="note">Objetivo: acelerar decisões e padronizar o acompanhamento da engenharia.</div>
+    `,
     myComment:
       "Comecei em HTML/CSS/JS puro para agilizar, e planejo migrar para Blazor assim que a hospedagem for liberada.",
     videoUrl: "Imagens-Portfolios/Central-Gestão.mp4",
@@ -69,8 +92,17 @@ const projectsData = [
     progress: 100,
     tech: ["C#", "WPF", "VS 2022"],
     description: "Corretor automático de código .pdl para garantir estabilidade dentro do Process Simulate.",
-    details:
-      "Projetei o algoritmo para ler o código do robô, pontuar possíveis erros com altíssima precisão e realizar as correções automaticamente. Integrei esta ferramenta com sucesso ao pacote Comau Tools.",
+    details: `
+      O <strong class="benefit-blue">PDL Remaker</strong> é um corretor automático de código .pdl focado em estabilidade dentro do Process Simulate.
+      Ele detecta padrões problemáticos e aplica correções com alta precisão, reduzindo falhas de importação e retrabalho.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-blue">Reduz falhas de importação</strong> por correção automática de sintaxe.</li>
+        <li><strong class="benefit-blue">Padroniza o código</strong> e melhora a estabilidade do fluxo.</li>
+        <li><strong class="benefit-blue">Economiza tempo</strong> ao evitar correções manuais repetitivas.</li>
+      </ul>
+    `,
     myComment:
       "O diferencial aqui é a precisão altíssima na detecção. Ele não só aponta o erro, mas entrega o código corrigido.",
     videoUrl: "Imagens-Portfolios/PDL-Remaker.mp4",
@@ -101,8 +133,17 @@ const projectsData = [
     progress: 100,
     tech: ["C#", "WPF", "Tecnomatix API"],
     description: "Ferramenta de correção de código ABB integrada ao Process Simulate.",
-    details:
-      "Desenvolvi de forma semelhante ao PDL Remaker, mas focado em ABB e rodando integrado ao software da Siemens. Com este projeto, demonstrei a capacidade de criar plugins internos para o Process Simulate.",
+    details: `
+      O <strong class="benefit-blue">Corretor ABB</strong> é uma ferramenta integrada ao Process Simulate para correção de código ABB.
+      Ao operar dentro do ambiente da Siemens, ele reduz a dependência de softwares externos e simplifica o fluxo do usuário.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-blue">Elimina alternância de janelas</strong> e reduz etapas manuais.</li>
+        <li><strong class="benefit-blue">Aumenta a produtividade</strong> com correção no mesmo ambiente de simulação.</li>
+        <li><strong class="benefit-blue">Padroniza o fluxo</strong> e serve como base para plugins internos.</li>
+      </ul>
+    `,
     myComment:
       "A grande sacada foi inserir a ferramenta diretamente dentro do Process Simulate usando bibliotecas da Tecnomatix.",
     videoUrl: "Imagens-Portfolios/CorretorABB.mp4",
@@ -132,8 +173,17 @@ const projectsData = [
     progress: 60,
     tech: ["C#", "WPF", "Leitura Binária"],
     description: "Leitor puro de códigos binários (.cod/.var) para eliminar a necessidade do WinCRC.",
-    details:
-      "Estou implementando a descriptografia e leitura direta de binários através de APIs para converter arquivos onde o código fonte foi perdido.",
+    details: `
+      O <strong class="benefit-red">Decodificador Binário</strong> é um leitor de arquivos .cod/.var voltado para recuperação de códigos legados,
+      eliminando a necessidade de ferramentas auxiliares e reduzindo a dependência de processos antigos.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-red">Recupera ativos intelectuais</strong> quando o código fonte foi perdido.</li>
+        <li><strong class="benefit-blue">Evita reescrita do zero</strong> e reduz custo de engenharia.</li>
+        <li><strong class="benefit-blue">Acelera manutenção</strong> e diagnóstico de projetos legados.</li>
+      </ul>
+    `,
     myComment:
       "Projeto com grau de dificuldade muito alta por envolver descriptografia e leitura binária pura.",
     videoUrl: "Imagens-Portfolios/Decodificador-CODVAR-Files.mp4",
@@ -155,8 +205,17 @@ const projectsData = [
     progress: 100,
     tech: ["C#", "WPF", "VS 2022"],
     description: "Ferramenta para recálculo de trajetórias visando evitar colisões entre robôs.",
-    details:
-      "Criei uma lógica matemática que refaz o movimento do robô para garantir que a trajetória esteja livre de colisões. Foi desenvolvido para uma aplicação específica e depois integrei ao Comau Tools.",
+    details: `
+      O <strong class="benefit-blue">Rebuild Cod/Var</strong> é uma ferramenta de recálculo de trajetórias para reduzir risco de colisões em células complexas.
+      Ele refaz o movimento de forma matemática, trazendo maior previsibilidade ao resultado final.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-blue">Aumenta a segurança operacional</strong> ao prevenir colisões.</li>
+        <li><strong class="benefit-blue">Reduz perdas</strong> por danos físicos e retrabalhos.</li>
+        <li><strong class="benefit-blue">Acelera o ajuste de trajetória</strong> com lógica consistente.</li>
+      </ul>
+    `,
     myComment:
       "Ferramenta criada para um cenário que precisava evitar colisão a todo custo.",
     videoUrl: "Imagens-Portfolios/Rebuild PDL.mp4",
@@ -186,8 +245,17 @@ const projectsData = [
     progress: 100,
     tech: ["C#", "WPF", "Automação"],
     description: "Utilitário que converte .jt para .cojt automatizando processos.",
-    details:
-      "Automatizei a preparação de arquivos 3D para a simulação, eliminando a necessidade dos scripts .bat instáveis que utilizávamos anteriormente.",
+    details: `
+      O <strong class="benefit-blue">Conversor .jt → .cojt</strong> automatiza a preparação de arquivos 3D para simulação,
+      substituindo scripts instáveis e garantindo padronização do pipeline.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-blue">Padroniza a entrada</strong> de modelos 3D para a simulação.</li>
+        <li><strong class="benefit-blue">Aumenta a estabilidade</strong> do fluxo ao remover dependência de .bat.</li>
+        <li><strong class="benefit-blue">Reduz erros silenciosos</strong> de conversão e retrabalho.</li>
+      </ul>
+    `,
     myComment:
       "O objetivo principal foi substituir os arquivos .bat antigos que a Simulação usava. Criei algo robusto em C#.",
     videoUrl: "Imagens-Portfolios/jt--cojt.mp4",
@@ -217,8 +285,17 @@ const projectsData = [
     progress: 100,
     tech: ["React", "JSON", "HTML/CSS"],
     description: "Central web para organização de arquivos de estudos (.jt).",
-    details:
-      "Desenvolvi para organizar o fluxo de arquivos da rede. Serviu como base de aprendizado para ferramentas web atuais, embora tenha sido descontinuado por questões de infraestrutura.",
+    details: `
+      A <strong class="benefit-blue">Central de Arquivos Web</strong> foi criada para organizar arquivos de estudo (.jt) em rede corporativa,
+      reduzindo duplicidade e garantindo acesso rápido à informação correta.
+
+      <span class="benefits-title">Benefícios principais</span>
+      <ul>
+        <li><strong class="benefit-blue">Cria fonte única da verdade</strong> para arquivos e versões.</li>
+        <li><strong class="benefit-blue">Evita duplicidade</strong> e uso de conteúdo obsoleto.</li>
+        <li><strong class="benefit-blue">Acelera busca e organização</strong> do material de engenharia.</li>
+      </ul>
+    `,
     myComment:
       "Foi meu primeiro projeto na Comau. O aprendizado técnico foi essencial.",
     videoUrl: "Imagens-Portfolios/Central-Arquivos-Web.mp4",
@@ -243,8 +320,16 @@ const projectsData = [
     progress: 0,
     tech: ["AI", "Python"],
     description: "Geração automática de layout de fábrica baseada em fluxo produtivo.",
-    details:
-      "Proposta para utilizar algoritmos que sugerem posições ideais de robôs e estações baseadas no tempo de ciclo desejado, reduzindo semanas de estudo para poucas horas.",
+    details: `
+      O <strong class="benefit-purple">Auto-Layout Generator</strong> é uma proposta para gerar layouts de fábrica com base em fluxo produtivo,
+      sugerindo posições de robôs e estações de forma otimizada.
+
+      <span class="benefits-title">Benefícios esperados</span>
+      <ul>
+        <li><strong class="benefit-purple">Reduz semanas de estudo</strong> para poucas horas.</li>
+        <li><strong class="benefit-purple">Sugere alternativas</strong> com base em critérios objetivos (tempo de ciclo).</li>
+      </ul>
+    `,
     myComment: "Um passo em direção à engenharia generativa.",
     videoUrl: "",
     benchmark: null,
@@ -260,8 +345,16 @@ const projectsData = [
     progress: 0,
     tech: ["Unity", "VR"],
     description: "Treinamento imersivo de segurança em ambiente virtual.",
-    details:
-      "Proposta para criar um ambiente VR onde operadores podem simular situações de risco sem perigo real, com foco em retenção e prevenção de acidentes.",
+    details: `
+      O <strong class="benefit-red">VR Safety Training</strong> é uma proposta de treinamento imersivo de segurança em realidade virtual,
+      permitindo simular situações de risco sem exposição real do operador.
+
+      <span class="benefits-title">Benefícios esperados</span>
+      <ul>
+        <li><strong class="benefit-red">Reduz risco de acidentes</strong> com prática segura.</li>
+        <li><strong class="benefit-red">Melhora retenção</strong> por treinamento imersivo e repetível.</li>
+      </ul>
+    `,
     myComment: "Gamificação aplicada à segurança industrial.",
     videoUrl: "",
     benchmark: null,
@@ -506,7 +599,7 @@ function populateStandardData(project) {
   modalCategory.textContent = project.category;
 
   // Mantém compatível com seu texto atual
-  modalDetails.textContent = project.details;
+  modalDetails.innerHTML = project.details;
 
   modalComment.textContent = `"${project.myComment}"`;
   modalId.textContent = `PROJETO #${String(project.id).padStart(4, "0")}`;
