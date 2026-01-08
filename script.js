@@ -1,4 +1,6 @@
-// DADOS COMPLETOS (Sincronizado com a versão React)
+// =========================
+// DATA (com seus vídeos + benchmarks reais)
+// =========================
 const projectsData = [
   {
     id: 6,
@@ -14,22 +16,17 @@ const projectsData = [
     myComment:
       "Este foi o maior e mais complexo projeto que fiz até agora. A capacidade de fazer uma análise profunda das tabelas nominais versus backups e gerar deltas precisos em Excel trouxe um ganho enorme de produtividade.",
     videoUrl: "Imagens-Portfolios/WeldScanner.mp4",
+    // Cenário: 100 programas -> 10 min cada manual / 5s cada no app
     benchmark: {
       timeSaved: 99,
-      oldProcessVal: 10,
-      newProcessVal: 0.0833, // ~5s em minutos
-      oldProcessLabel: "10 min / programa",
-      newProcessLabel: "5 s / programa",
-      annualSaving: "≈ 16h 32m / 100 prog.",
-      roi: "≈ 120x mais rápido",
-      volumeTitle: "Extração em lote (100 programas)",
-      volumeManual: "16h 40m",
-      volumeApp: "≈ 8 min",
+      manualTime: 1000,      // minutos
+      appTime: 8.33,         // minutos
+      annualSaving: "≈ 16h 32m (lote 100 prog.)",
+      roi: "≈ 120x",
+      volumeLabel: "Volume: Lote de 100 Programas"
     },
-    images: {
-      cover: "Imagens-Portfolios/WeldScanner.png",
-      gallery: [],
-    },
+    // Roadmap: se vazio, o código mostra “Nenhum update previsto.”
+    updates: [],
     subtasks: [
       { id: "t1", title: "Leitura de Backups", completed: true },
       { id: "t2", title: "Algoritmo de Delta", completed: true },
@@ -37,6 +34,7 @@ const projectsData = [
       { id: "t4", title: "Relatórios Excel", completed: true },
     ],
   },
+
   {
     id: 7,
     title: "Central de Gestão",
@@ -45,17 +43,15 @@ const projectsData = [
     status: "ongoing",
     progress: 35,
     tech: ["HTML/CSS/JS", "Mobile", "Blazor"],
-    description: "Plataforma Web que estou desenvolvendo para o gerenciamento do ciclo de vida de projetos na engenharia.",
+    description: "Plataforma Web para o gerenciamento do ciclo de vida de projetos na engenharia.",
     details:
       "Estou construindo este sistema para centralizar informações iniciais, gestão de dispositivos, marcos do projeto (Milestones) e dashboards. O foco é permitir a liberação de dispositivos para simulação. Comecei em HTML/JS e planejo a migração para Blazor.",
     myComment:
-      "Diria que este projeto está 35% pronto. Comecei em HTML/CSS/JS puro para agilizar, mas já estou planejando toda a migração para Blazor assim que a hospedagem for liberada.",
+      "Comecei em HTML/CSS/JS puro para agilizar, e planejo migrar para Blazor assim que a hospedagem for liberada.",
     videoUrl: "Imagens-Portfolios/Central-Gestão.mp4",
     benchmark: null,
-    images: {
-      cover: "Imagens-Portfolios/Controle-Status.png",
-      gallery: [],
-    },
+    // Se você não preencher updates, o script usa automaticamente as subtasks NÃO concluídas como roadmap.
+    updates: null,
     subtasks: [
       { id: "t1", title: "Interface Web", completed: true },
       { id: "t2", title: "Design Review", completed: true },
@@ -63,6 +59,7 @@ const projectsData = [
       { id: "t4", title: "Migração Blazor", completed: false },
     ],
   },
+
   {
     id: 2,
     title: "PDL Remaker",
@@ -71,28 +68,22 @@ const projectsData = [
     status: "completed",
     progress: 100,
     tech: ["C#", "WPF", "VS 2022"],
-    description: "Corretor automático de código .pdl (Robôs Comau) para garantir estabilidade dentro do Process Simulate.",
+    description: "Corretor automático de código .pdl para garantir estabilidade dentro do Process Simulate.",
     details:
       "Projetei o algoritmo para ler o código do robô, pontuar possíveis erros com altíssima precisão e realizar as correções automaticamente. Integrei esta ferramenta com sucesso ao pacote Comau Tools.",
     myComment:
       "O diferencial aqui é a precisão altíssima na detecção. Ele não só aponta o erro, mas entrega o código corrigido.",
     videoUrl: "Imagens-Portfolios/PDL-Remaker.mp4",
+    // Cenário: 440 robôs -> 20 min/robô manual / 2 min/robô app
     benchmark: {
       timeSaved: 90,
-      oldProcessVal: 20,
-      newProcessVal: 2,
-      oldProcessLabel: "20 min / robô",
-      newProcessLabel: "2 min / robô",
+      manualTime: 8800,  // 440 * 20
+      appTime: 880,      // 440 * 2
       annualSaving: "≈ 132h (lote 440 robôs)",
-      roi: "≈ 10x mais rápido",
-      volumeTitle: "Carregamento de Lote (440 robôs)",
-      volumeManual: "146h 40m",
-      volumeApp: "14h 40m",
+      roi: "10x",
+      volumeLabel: "Volume: 440 Robôs"
     },
-    images: {
-      cover: "Imagens-Portfolios/PDL-Remake.png",
-      gallery: [],
-    },
+    updates: [],
     subtasks: [
       { id: "t1", title: "Parser .pdl", completed: true },
       { id: "t2", title: "Detecção Erros", completed: true },
@@ -100,6 +91,7 @@ const projectsData = [
       { id: "t4", title: "Integração Tools", completed: true },
     ],
   },
+
   {
     id: 8,
     title: "Corretor ABB",
@@ -108,34 +100,29 @@ const projectsData = [
     status: "completed",
     progress: 100,
     tech: ["C#", "WPF", "Tecnomatix API"],
-    description: "Ferramenta de correção de código para robôs ABB que inseri diretamente dentro do Process Simulate.",
+    description: "Ferramenta de correção de código ABB integrada ao Process Simulate.",
     details:
       "Desenvolvi de forma semelhante ao PDL Remaker, mas focado em ABB e rodando integrado ao software da Siemens. Com este projeto, demonstrei a capacidade de criar plugins internos para o Process Simulate.",
     myComment:
       "A grande sacada foi inserir a ferramenta diretamente dentro do Process Simulate usando bibliotecas da Tecnomatix.",
     videoUrl: "Imagens-Portfolios/CorretorABB.mp4",
+    // Cenário: 50 programas -> 4 min/prog manual / 30s (0.5min) app
     benchmark: {
       timeSaved: 88,
-      oldProcessVal: 4,
-      newProcessVal: 0.5, // 30s em minutos
-      oldProcessLabel: "4 min / programa",
-      newProcessLabel: "30 s / programa",
-      annualSaving: "≈ 2h 55m / 50 prog.",
-      roi: "≈ 8x mais rápido",
-      volumeTitle: "Correção em lote (50 programas)",
-      volumeManual: "3h 20m",
-      volumeApp: "25 min",
+      manualTime: 200,  // 50 * 4
+      appTime: 25,      // 50 * 0.5
+      annualSaving: "≈ 2h 55m (lote 50 prog.)",
+      roi: "8x",
+      volumeLabel: "Volume: 50 Programas"
     },
-    images: {
-      cover: "Imagens-Portfolios/ABB-Tool.png",
-      gallery: [],
-    },
+    updates: [],
     subtasks: [
       { id: "t1", title: "API Tecnomatix", completed: true },
       { id: "t2", title: "Lógica ABB", completed: true },
       { id: "t3", title: "Interface WPF", completed: true },
     ],
   },
+
   {
     id: 3,
     title: "Decodificador Binário",
@@ -144,23 +131,21 @@ const projectsData = [
     status: "ongoing",
     progress: 60,
     tech: ["C#", "WPF", "Leitura Binária"],
-    description: "Leitor puro de códigos binários (.cod/.var) que estou desenvolvendo para eliminar a necessidade do WinCRC.",
+    description: "Leitor puro de códigos binários (.cod/.var) para eliminar a necessidade do WinCRC.",
     details:
-      "Um dos meus projetos de maior complexidade técnica. Estou implementando a descriptografia e leitura direta de binários através de APIs para converter arquivos onde o código fonte foi perdido.",
+      "Estou implementando a descriptografia e leitura direta de binários através de APIs para converter arquivos onde o código fonte foi perdido.",
     myComment:
-      "Esse é um projeto com grau de dificuldade muito alta por envolver descriptografia e leitura binária pura.",
+      "Projeto com grau de dificuldade muito alta por envolver descriptografia e leitura binária pura.",
     videoUrl: "Imagens-Portfolios/Decodificador-CODVAR-Files.mp4",
     benchmark: null,
-    images: {
-      cover: "Imagens-Portfolios/.cod.var--.pdl.lsv.png",
-      gallery: [],
-    },
+    updates: null,
     subtasks: [
       { id: "t1", title: "Eng. Reversa", completed: true },
       { id: "t2", title: "Descriptografia", completed: true },
       { id: "t3", title: "Conversão Texto", completed: false },
     ],
   },
+
   {
     id: 4,
     title: "Rebuild Cod/Var",
@@ -169,34 +154,29 @@ const projectsData = [
     status: "completed",
     progress: 100,
     tech: ["C#", "WPF", "VS 2022"],
-    description: "Ferramenta que desenvolvi para recálculo de trajetórias visando evitar colisões entre robôs.",
+    description: "Ferramenta para recálculo de trajetórias visando evitar colisões entre robôs.",
     details:
-      "Criei uma lógica matemática que refaz o movimento do robô para garantir que a trajetória esteja livre de colisões. Foi desenvolvido para uma aplicação específica e depois o integrei ao Comau Tools.",
+      "Criei uma lógica matemática que refaz o movimento do robô para garantir que a trajetória esteja livre de colisões. Foi desenvolvido para uma aplicação específica e depois integrei ao Comau Tools.",
     myComment:
-      "Fiz essas ferramentas para uma aplicação específica que precisava evitar colisão a todo custo.",
+      "Ferramenta criada para um cenário que precisava evitar colisão a todo custo.",
     videoUrl: "Imagens-Portfolios/Rebuild PDL.mp4",
+    // Cenário: 100 códigos -> 3 min/código manual / 18s (0.3min) app
     benchmark: {
       timeSaved: 90,
-      oldProcessVal: 3,
-      newProcessVal: 0.3, // 18s em minutos
-      oldProcessLabel: "3 min / código",
-      newProcessLabel: "18 s / código",
-      annualSaving: "≈ 4h 30m / 100 cód.",
-      roi: "≈ 10x mais rápido",
-      volumeTitle: "Rebuild em lote (100 códigos)",
-      volumeManual: "5h",
-      volumeApp: "30 min",
+      manualTime: 300, // 100*3
+      appTime: 30,     // 100*0.3
+      annualSaving: "≈ 4h 30m (lote 100 cód.)",
+      roi: "10x",
+      volumeLabel: "Volume: 100 Códigos"
     },
-    images: {
-      cover: "Imagens-Portfolios/Rebuild.png",
-      gallery: [],
-    },
+    updates: [],
     subtasks: [
       { id: "t1", title: "Cálculo Trajetória", completed: true },
       { id: "t2", title: "Detecção Colisão", completed: true },
       { id: "t3", title: "Novo Caminho", completed: true },
     ],
   },
+
   {
     id: 5,
     title: "Conversor .jt -> .cojt",
@@ -205,34 +185,29 @@ const projectsData = [
     status: "completed",
     progress: 100,
     tech: ["C#", "WPF", "Automação"],
-    description: "Utilitário que criei para converter arquivos 3D .jt para o formato .cojt, automatizando processos.",
+    description: "Utilitário que converte .jt para .cojt automatizando processos.",
     details:
       "Automatizei a preparação de arquivos 3D para a simulação, eliminando a necessidade dos scripts .bat instáveis que utilizávamos anteriormente.",
     myComment:
       "O objetivo principal foi substituir os arquivos .bat antigos que a Simulação usava. Criei algo robusto em C#.",
     videoUrl: "Imagens-Portfolios/jt--cojt.mp4",
+    // Cenário: 100 arquivos -> 3 min/arq manual / 30s (0.5min) app
     benchmark: {
       timeSaved: 83,
-      oldProcessVal: 3,
-      newProcessVal: 0.5, // 30s em minutos
-      oldProcessLabel: "3 min / arquivo",
-      newProcessLabel: "30 s / arquivo",
-      annualSaving: "≈ 4h 10m / 100 arq.",
-      roi: "≈ 6x mais rápido",
-      volumeTitle: "Conversão em lote (100 arquivos)",
-      volumeManual: "5h",
-      volumeApp: "50 min",
+      manualTime: 300,
+      appTime: 50,
+      annualSaving: "≈ 4h 10m (lote 100 arq.)",
+      roi: "6x",
+      volumeLabel: "Volume: 100 Arquivos"
     },
-    images: {
-      cover: "Imagens-Portfolios/JT-Converter.png",
-      gallery: [],
-    },
+    updates: [],
     subtasks: [
       { id: "t1", title: "Leitura .jt", completed: true },
       { id: "t2", title: "Estrutura .cojt", completed: true },
       { id: "t3", title: "Automação Batch", completed: true },
     ],
   },
+
   {
     id: 1,
     title: "Central Arquivos Web",
@@ -241,110 +216,193 @@ const projectsData = [
     status: "completed",
     progress: 100,
     tech: ["React", "JSON", "HTML/CSS"],
-    description: "Meu primeiro projeto na Comau. Uma central web para organização de arquivos de estudos (.jt).",
+    description: "Central web para organização de arquivos de estudos (.jt).",
     details:
-      "Desenvolvi para organizar o fluxo de arquivos da rede. Serviu como minha base de aprendizado para as ferramentas web atuais, embora tenha sido descontinuado por questões de infraestrutura na época.",
+      "Desenvolvi para organizar o fluxo de arquivos da rede. Serviu como base de aprendizado para ferramentas web atuais, embora tenha sido descontinuado por questões de infraestrutura.",
     myComment:
-      "Foi meu primeiro projeto na Comau. Trabalhei nele durante um bom tempo, o aprendizado técnico foi essencial.",
+      "Foi meu primeiro projeto na Comau. O aprendizado técnico foi essencial.",
     videoUrl: "Imagens-Portfolios/Central-Arquivos-Web.mp4",
     benchmark: null,
-    images: {
-      cover: "Imagens-Portfolios/First-Site.png",
-      gallery: [],
-    },
+    updates: [],
     subtasks: [
       { id: "t1", title: "React & JSON", completed: true },
       { id: "t2", title: "Interface Cliente", completed: true },
       { id: "t3", title: "Deploy", completed: true },
     ],
   },
+
+  // =========================
+  // SUGESTÕES FUTURAS (exemplo)
+  // =========================
+  {
+    id: 99,
+    title: "Auto-Layout Generator",
+    category: "Sugestão Futura",
+    client: "Planejamento",
+    status: "suggestion",
+    progress: 0,
+    tech: ["AI", "Python"],
+    description: "Geração automática de layout de fábrica baseada em fluxo produtivo.",
+    details:
+      "Proposta para utilizar algoritmos que sugerem posições ideais de robôs e estações baseadas no tempo de ciclo desejado, reduzindo semanas de estudo para poucas horas.",
+    myComment: "Um passo em direção à engenharia generativa.",
+    videoUrl: "",
+    benchmark: null,
+    updates: ["Fase: Pesquisa Conceitual", "Fase: Prototipagem (Python)"],
+    subtasks: [],
+  },
+  {
+    id: 100,
+    title: "VR Safety Training",
+    category: "Sugestão Futura",
+    client: "Treinamento",
+    status: "suggestion",
+    progress: 0,
+    tech: ["Unity", "VR"],
+    description: "Treinamento imersivo de segurança em ambiente virtual.",
+    details:
+      "Proposta para criar um ambiente VR onde operadores podem simular situações de risco sem perigo real, com foco em retenção e prevenção de acidentes.",
+    myComment: "Gamificação aplicada à segurança industrial.",
+    videoUrl: "",
+    benchmark: null,
+    updates: ["Fase: Design Doc", "Fase: Escolha de Hardware"],
+    subtasks: [],
+  },
 ];
 
-// Elementos do DOM
+// =========================
+// DOM
+// =========================
 const cardsGrid = document.getElementById("cardsGrid");
 const filterButtons = document.querySelectorAll(".filter-btn");
+
 const modal = document.getElementById("projectModal");
 const modalBackdrop = document.querySelector("[data-close-modal]");
 const modalClose = document.getElementById("modalClose");
+const modalCard = document.getElementById("modalCard");
 
-// Elementos do Modal
+// Views
+const standardView = document.getElementById("standardView");
+const analyticsView = document.getElementById("analyticsView");
+const backToStandard = document.getElementById("backToStandard");
+const canvas3DContainer = document.getElementById("canvas3DContainer");
+
+// Modal elements
 const modalTitle = document.getElementById("modalTitle");
 const modalCategory = document.getElementById("modalCategory");
 const modalStatus = document.getElementById("modalStatus");
 const modalClient = document.getElementById("modalClient");
 const modalTech = document.getElementById("modalTech");
 const modalDetails = document.getElementById("modalDetails");
+const modalUpdates = document.getElementById("modalUpdates");
 const modalTasks = document.getElementById("modalTasks");
 const modalTaskSummary = document.getElementById("modalTaskSummary");
 const modalComment = document.getElementById("modalComment");
 const modalId = document.getElementById("modalId");
 
-// Vídeo (Modal)
+// Video
+const modalVideoContainer = document.getElementById("modalVideoContainer");
+const modalVideoEmpty = document.getElementById("modalVideoEmpty");
 const modalVideo = document.getElementById("modalVideo");
 const modalVideoSource = document.getElementById("modalVideoSource");
-const modalVideoBadge = document.getElementById("modalVideoBadge");
 
-// Benchmark (Modal)
+// Benchmark
 const benchmarkSection = document.getElementById("benchmarkSection");
 const benchmarkToggle = document.getElementById("benchmarkToggle");
-const benchmarkDetails = document.getElementById("benchmarkDetails");
+const kpiSaving = document.getElementById("kpiSaving");
+const kpiRoi = document.getElementById("kpiRoi");
+const chartVolumeLabel = document.getElementById("chartVolumeLabel");
+const analyticsTitle = document.getElementById("analyticsTitle");
+
+// =========================
+// STATE
+// =========================
 
 let currentFilter = "all";
 let activeProject = null;
-let benchmarkExpanded = false;
+
 let cardVideoObserver = null;
 
+// Chart.js
+let chartInstance = null;
+
+// Three.js
+let scene, camera, renderer, animationId;
+let manualParticles = [];
+let appParticles = [];
+
+// =========================
+// RENDER CARDS
+// =========================
 function renderCards() {
   cardsGrid.innerHTML = "";
 
-  const filtered = projectsData.filter((p) => currentFilter === "all" || p.status === currentFilter);
+  const filtered = projectsData.filter((p) => {
+    if (currentFilter === "all") return p.status !== "suggestion";
+    return p.status === currentFilter;
+  });
+
+  if (filtered.length === 0) {
+    cardsGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--text-secondary)">
+      Nenhum item encontrado nesta categoria.
+    </div>`;
+    if (window.lucide) lucide.createIcons();
+    return;
+  }
 
   filtered.forEach((project, index) => {
     const card = document.createElement("article");
     card.className = "card";
-    card.style.animationDelay = `${index * 100}ms`;
+    card.style.animationDelay = `${index * 50}ms`;
 
-    const railColor = project.status === "completed" ? "var(--emerald)" : "var(--blue)";
-    const statusIcon = project.status === "completed" ? "check-circle-2" : "clock";
-    const statusText = project.status === "completed" ? "Concluído" : "Em andamento";
-    const statusClass = project.status === "completed" ? "status-badge completed" : "status-badge";
-    const progressClass = project.status === "completed" ? "progress-fill completed" : "progress-fill";
+    // Status class para trilho/cor
+    if (project.status === "completed") card.classList.add("completed");
+    if (project.status === "ongoing") card.classList.add("ongoing");
+    if (project.status === "suggestion") card.classList.add("suggestion");
 
-    const techTags = project.tech
+    let statusText = "Em andamento";
+    let statusIcon = "clock";
+    let statusClass = "status-badge ongoing";
+    let progressClass = "progress-fill ongoing";
+
+    if (project.status === "completed") {
+      statusText = "Concluído";
+      statusIcon = "check-circle-2";
+      statusClass = "status-badge completed";
+      progressClass = "progress-fill completed";
+    } else if (project.status === "suggestion") {
+      statusText = "Sugestão";
+      statusIcon = "lightbulb";
+      statusClass = "status-badge suggestion";
+      progressClass = "progress-fill suggestion";
+    }
+
+    const techTags = (project.tech || [])
       .slice(0, 3)
-      .map((t) => `<span class="tech-pill"><span data-lucide="code-2" width="10"></span>${t}</span>`)
+      .map((t) => `<span class="tech-pill">${t}</span>`)
       .join("");
 
-    const videoPreview = project.videoUrl
+    const hasVideo = !!(project.videoUrl && project.videoUrl.trim());
+    const videoPreview = hasVideo
       ? `
         <div class="card-video" aria-hidden="true">
-          <video
-            class="card-video-el"
-            data-card-video
-            muted
-            autoplay
-            loop
-            playsinline
-            preload="metadata"
-          >
+          <video class="card-video-el" data-card-video muted autoplay loop playsinline preload="metadata">
             <source src="${encodeURI(project.videoUrl)}" type="video/mp4">
           </video>
-          <div class="card-video-badge">
-            <span data-lucide="play" width="14"></span> Preview
-          </div>
+          <div class="card-video-badge"><span data-lucide="play" width="12"></span> Preview</div>
         </div>
       `
       : `
         <div class="card-video" aria-hidden="true">
           <div class="card-video-placeholder">
-            <span data-lucide="clock"></span>
-            <div>Preview em produção</div>
+            <span data-lucide="image"></span>
+            <div>Conceito</div>
           </div>
         </div>
       `;
 
     card.innerHTML = `
-      <div class="status-rail" style="background:${railColor}"></div>
+      <div class="status-rail"></div>
       <div class="card-head">
         <div class="card-meta">
           <span class="category">${project.category}</span>
@@ -372,7 +430,7 @@ function renderCards() {
       </div>
     `;
 
-    card.addEventListener("click", () => openModal(project));
+    card.addEventListener("click", () => openModal(project, card));
     cardsGrid.appendChild(card);
   });
 
@@ -410,160 +468,90 @@ function pauseAllCardPreviews() {
   if (cardVideoObserver) cardVideoObserver.disconnect();
 }
 
-function setupVideo(project) {
-  if (!modalVideo || !modalVideoSource) return;
-
-  if (project.videoUrl) {
-    modalVideo.style.display = "block";
-    if (modalVideoBadge) modalVideoBadge.hidden = false;
-
-    modalVideo.muted = true;
-    modalVideo.loop = true;
-    modalVideo.autoplay = true;
-    modalVideo.playsInline = true;
-
-    modalVideoSource.src = encodeURI(project.videoUrl);
-    modalVideo.load();
-    modalVideo.currentTime = 0;
-    modalVideo.play().catch(() => {});
-  } else {
-    modalVideo.pause();
-    modalVideoSource.src = "";
-    modalVideo.load();
-    modalVideo.style.display = "none";
-    if (modalVideoBadge) modalVideoBadge.hidden = true;
-  }
-}
-
-function getBenchmarkHTML(benchmark) {
-  const safeOld = benchmark.oldProcessVal || 1;
-  let newWidth = (benchmark.newProcessVal / safeOld) * 100;
-  newWidth = Math.max(2, Math.min(100, newWidth));
-
-  const volumeMarkup = benchmark.volumeTitle
-    ? `
-    <div class="volume-box">
-      <div class="vol-header">
-        <span data-lucide="trending-up"></span>
-        Capacidade Produtiva (Cenário Real)
-      </div>
-      <div style="font-size:13px;color:var(--slate-500);margin-bottom:12px;text-align:center;">
-        Exemplo: ${benchmark.volumeTitle}
-      </div>
-      <div class="vol-grid">
-        <div class="vol-item">
-          <div class="vol-icon"><span data-lucide="snail"></span></div>
-          <div style="font-size:11px;font-weight:600;color:var(--slate-400);">MANUAL</div>
-          <span class="vol-val" style="color:var(--slate-600);">${benchmark.volumeManual}</span>
-        </div>
-        <div class="vol-item">
-          <div class="vol-icon"><span data-lucide="rocket"></span></div>
-          <div style="font-size:11px;font-weight:600;color:#059669;">COM FERRAMENTA</div>
-          <span class="vol-val" style="color:#059669;">${benchmark.volumeApp}</span>
-        </div>
-      </div>
-    </div>
-  `
-    : "";
-
-  return `
-    <div class="analytics-card">
-      <div class="saving-badge">
-        <span data-lucide="trending-down"></span>
-        -${benchmark.timeSaved}% TEMPO
-      </div>
-
-      <div class="chart-row">
-        <div class="chart-label">Tempo de Ciclo (Processo)</div>
-
-        <div class="bar-container">
-          <div class="bar-fill old" style="width:100%"></div>
-          <div class="bar-text">
-            <span>Manual</span>
-            <span class="bar-value">${benchmark.oldProcessLabel}</span>
-          </div>
-        </div>
-
-        <div class="bar-container">
-          <div class="bar-fill new" style="width:${newWidth}%"></div>
-          <div class="bar-text" style="color:var(--emerald)">
-            <span>Com App</span>
-            <span class="bar-value">${benchmark.newProcessLabel}</span>
-          </div>
-        </div>
-      </div>
-
-      ${volumeMarkup}
-
-      <div class="kpi-grid">
-        <div class="kpi-box">
-          <span class="kpi-val">${benchmark.annualSaving}</span>
-          <span class="kpi-lbl">Economia Estimada</span>
-        </div>
-        <div class="kpi-box" style="background:#eff6ff">
-          <span class="kpi-val" style="color:var(--blue)">${benchmark.roi}</span>
-          <span class="kpi-lbl">ROI Estimado</span>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function setupBenchmark(project) {
-  if (!benchmarkSection || !benchmarkToggle || !benchmarkDetails) return;
-
-  if (!project.benchmark) {
-    benchmarkSection.hidden = true;
-    return;
-  }
-
-  benchmarkSection.hidden = false;
-  benchmarkExpanded = false;
-  benchmarkToggle.setAttribute("aria-expanded", "false");
-  benchmarkDetails.hidden = true;
-  benchmarkDetails.innerHTML = "";
-
-  benchmarkToggle.onclick = () => {
-    benchmarkExpanded = !benchmarkExpanded;
-    benchmarkToggle.setAttribute("aria-expanded", benchmarkExpanded ? "true" : "false");
-
-    if (benchmarkExpanded) {
-      benchmarkDetails.innerHTML = getBenchmarkHTML(project.benchmark);
-      benchmarkDetails.hidden = false;
-      if (window.lucide) lucide.createIcons();
-      setTimeout(() => {
-        benchmarkDetails.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 150);
-    } else {
-      benchmarkDetails.hidden = true;
-    }
-  };
-}
-
-function openModal(project) {
+// =========================
+// MODAL
+// =========================
+function openModal(project, cardElement) {
   activeProject = project;
   pauseAllCardPreviews();
 
+  // iOS zoom animation: calcula deslocamento do card até o centro da tela
+  if (cardElement && modalCard) {
+    const rect = cardElement.getBoundingClientRect();
+    const cardCenterX = rect.left + rect.width / 2;
+    const cardCenterY = rect.top + rect.height / 2;
+    const windowCenterX = window.innerWidth / 2;
+    const windowCenterY = window.innerHeight / 2;
+
+    const translateX = cardCenterX - windowCenterX;
+    const translateY = cardCenterY - windowCenterY;
+
+    modalCard.style.setProperty("--start-x", `${translateX}px`);
+    modalCard.style.setProperty("--start-y", `${translateY}px`);
+    modalCard.style.setProperty("--start-scale", "0.5");
+  }
+
+  showStandardView();
+  populateStandardData(project);
+
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  if (window.lucide) lucide.createIcons();
+}
+
+function populateStandardData(project) {
   modalTitle.textContent = project.title;
   modalCategory.textContent = project.category;
+
+  // Mantém compatível com seu texto atual
   modalDetails.textContent = project.details;
+
   modalComment.textContent = `"${project.myComment}"`;
   modalId.textContent = `PROJETO #${String(project.id).padStart(4, "0")}`;
 
-  const isCompleted = project.status === "completed";
-  modalStatus.className = isCompleted ? "status-chip completed" : "status-chip";
-  modalStatus.innerHTML = `<span data-lucide="${isCompleted ? "check-circle-2" : "clock"}"></span>${
-    isCompleted ? "Concluído" : "Em Andamento"
-  }`;
+  // Status badge
+  let statusText = "Em Andamento";
+  let statusClass = "status-badge ongoing";
+  let icon = "clock";
 
-  modalClient.innerHTML = `<span data-lucide="layers"></span> Cliente: <strong>${project.client}</strong>`;
-  modalTech.innerHTML = project.tech.map((t) => `<span class="tech-chip">${t}</span>`).join("");
+  if (project.status === "completed") {
+    statusText = "Concluído";
+    statusClass = "status-badge completed";
+    icon = "check-circle-2";
+  } else if (project.status === "suggestion") {
+    statusText = "Sugestão";
+    statusClass = "status-badge suggestion";
+    icon = "lightbulb";
+  }
 
+  modalStatus.className = statusClass;
+  modalStatus.innerHTML = `<span data-lucide="${icon}"></span>${statusText}`;
+
+  modalClient.innerHTML = `<span data-lucide="layers" width="14"></span> Cliente: <strong>${project.client}</strong>`;
+  modalTech.innerHTML = (project.tech || []).map((t) => `<span class="tech-chip">${t}</span>`).join("");
+
+  // Roadmap: usa project.updates se existir; se for null, usa subtasks pendentes como "roadmap" automático
+  const pendingFromSubtasks = (project.subtasks || []).filter((t) => !t.completed).map((t) => t.title);
+  const roadmap = Array.isArray(project.updates) ? project.updates : pendingFromSubtasks;
+
+  modalUpdates.innerHTML = "";
+  if (roadmap && roadmap.length > 0) {
+    roadmap.forEach((u) => {
+      modalUpdates.innerHTML += `<div class="update-item"><div class="update-dot"></div>${u}</div>`;
+    });
+  } else {
+    modalUpdates.innerHTML = `<div style="font-size:13px;color:#888;font-style:italic">Nenhum update previsto.</div>`;
+  }
+
+  // Tasks
   modalTasks.innerHTML = "";
-  const doneCount = project.subtasks.filter((t) => t.completed).length;
-  modalTaskSummary.textContent = `${doneCount}/${project.subtasks.length} Entregues`;
+  const subtasks = project.subtasks || [];
+  const doneCount = subtasks.filter((t) => t.completed).length;
+  modalTaskSummary.textContent = subtasks.length ? `${doneCount}/${subtasks.length} Entregues` : "";
 
-  project.subtasks.forEach((task) => {
+  subtasks.forEach((task) => {
     const div = document.createElement("div");
     div.className = "task";
     div.innerHTML = `
@@ -578,11 +566,81 @@ function openModal(project) {
   setupVideo(project);
   setupBenchmark(project);
 
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  if (window.lucide) lucide.createIcons();
+}
+
+function setupVideo(project) {
+  const hasVideo = !!(project.videoUrl && project.videoUrl.trim());
+
+  if (!hasVideo) {
+    modalVideo.pause();
+    modalVideoSource.src = "";
+    modalVideo.load();
+
+    modalVideoContainer.style.display = "none";
+    modalVideoEmpty.hidden = false;
+    return;
+  }
+
+  modalVideoEmpty.hidden = true;
+  modalVideoContainer.style.display = "block";
+
+  modalVideo.muted = true;
+  modalVideo.loop = true;
+  modalVideo.autoplay = true;
+  modalVideo.playsInline = true;
+
+  modalVideoSource.src = encodeURI(project.videoUrl);
+  modalVideo.load();
+  modalVideo.currentTime = 0;
+  modalVideo.play().catch(() => {});
+}
+
+function setupBenchmark(project) {
+  if (!project.benchmark) {
+    benchmarkSection.hidden = true;
+    return;
+  }
+  benchmarkSection.hidden = false;
+  benchmarkToggle.onclick = () => showAnalyticsView(project);
+}
+
+function showStandardView() {
+  standardView.classList.remove("inactive");
+  analyticsView.classList.remove("active");
+  analyticsView.style.display = "none";
+
+  stopThreeJS();
+  destroyChart();
+
+  // retoma vídeo
+  if (activeProject && activeProject.videoUrl) {
+    modalVideo.play().catch(() => {});
+  }
+}
+
+function showAnalyticsView(project) {
+  // troca views
+  standardView.classList.add("inactive");
+  analyticsView.style.display = "flex";
+  requestAnimationFrame(() => analyticsView.classList.add("active"));
+
+  // pausa vídeo
+  modalVideo.pause();
+
+  // KPIs
+  kpiSaving.textContent = project.benchmark.annualSaving || "--";
+  kpiRoi.textContent = project.benchmark.roi || "--";
+  if (chartVolumeLabel) chartVolumeLabel.textContent = project.benchmark.volumeLabel || "Volume Comparativo (Tempo em Minutos)";
+  if (analyticsTitle) analyticsTitle.textContent = project.title || "Performance Analytics";
 
   if (window.lucide) lucide.createIcons();
+
+  // init chart + 3d
+  setTimeout(() => {
+    initChart(project.benchmark.manualTime, project.benchmark.appTime);
+    initRaceVisual(canvas3DContainer);
+  }, 250);
 }
 
 function closeModal() {
@@ -590,15 +648,217 @@ function closeModal() {
   modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 
-  if (modalVideo && modalVideoSource) {
-    modalVideo.pause();
-    modalVideoSource.src = "";
-    modalVideo.load();
-  }
+  modalVideo.pause();
+  modalVideoSource.src = "";
+  modalVideo.load();
 
-  if (benchmarkDetails) benchmarkDetails.innerHTML = "";
+  stopThreeJS();
+  destroyChart();
+
   setupCardVideoObserver();
 }
+
+// =========================
+// ANALYTICS: Chart.js
+// =========================
+function initChart(manualTime, appTime) {
+  destroyChart();
+
+  const canvas = document.getElementById("performanceChart");
+  if (!canvas || !window.Chart) return;
+
+  Chart.defaults.color = "rgba(255,255,255,0.7)";
+  Chart.defaults.font.family = "Manrope";
+
+  const ctx = canvas.getContext("2d");
+  chartInstance = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Manual", "Ferramenta"],
+      datasets: [{
+        label: "Tempo (Minutos)",
+        data: [manualTime, appTime],
+        backgroundColor: ["rgba(255, 59, 48, 0.7)", "rgba(52, 199, 89, 0.9)"],
+        borderRadius: 8,
+        barThickness: 60,
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: "rgba(255,255,255,0.1)", drawBorder: false },
+          ticks: { color: "rgba(255,255,255,0.6)" },
+        },
+        x: {
+          grid: { display: false },
+          ticks: { color: "#fff", font: { weight: "bold" } },
+        },
+      },
+    },
+  });
+}
+
+function destroyChart() {
+  if (chartInstance) {
+    chartInstance.destroy();
+    chartInstance = null;
+  }
+}
+
+// ===========================
+// ANALYTICS: Three.js Visual
+// ===========================
+function initRaceVisual(container) {
+  if (!container || !window.THREE) return;
+  if (container.clientWidth === 0 || container.clientHeight === 0) return;
+
+  stopThreeJS();
+
+  manualParticles = [];
+  appParticles = [];
+
+  scene = new THREE.Scene();
+
+  const w = container.clientWidth;
+  const h = container.clientHeight;
+
+  camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 100);
+  camera.position.set(0, 0, 18);
+
+  renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(w, h);
+  renderer.setPixelRatio(window.devicePixelRatio || 1);
+  container.appendChild(renderer.domElement);
+
+  const pathLength = 24;
+  const startX = -12;
+
+  // Manual path (curvo)
+  const manualPoints = [];
+  for (let i = 0; i <= 60; i++) {
+    manualPoints.push(new THREE.Vector3(
+      startX + (i * (pathLength / 60)),
+      3 + Math.sin(i * 0.4) * 0.8,
+      0
+    ));
+  }
+  scene.add(new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints(manualPoints),
+    new THREE.LineBasicMaterial({ color: 0xFF3B30, opacity: 0.3, transparent: true })
+  ));
+
+  // App path (reto)
+  const appPoints = [new THREE.Vector3(startX, -1, 0), new THREE.Vector3(startX + pathLength, -1, 0)];
+  scene.add(new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints(appPoints),
+    new THREE.LineBasicMaterial({ color: 0x34C759, opacity: 0.3, transparent: true })
+  ));
+
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(3), 3));
+  pGeo.setAttribute("color", new THREE.BufferAttribute(new Float32Array(3), 3));
+
+  const particles = new THREE.Points(
+    pGeo,
+    new THREE.PointsMaterial({ size: 0.6, vertexColors: true, transparent: true, opacity: 0.9 })
+  );
+  scene.add(particles);
+
+  const tick = () => {
+    animationId = requestAnimationFrame(tick);
+
+    if (Math.random() < 0.02) manualParticles.push({ progress: 0 });
+    if (Math.random() < 0.15) appParticles.push({ x: startX });
+
+    for (let i = 0; i < manualParticles.length; i++) {
+      manualParticles[i].progress += 0.003;
+      if (manualParticles[i].progress > 1) { manualParticles.splice(i, 1); i--; }
+    }
+
+    for (let i = 0; i < appParticles.length; i++) {
+      appParticles[i].x += 0.4;
+      if (appParticles[i].x > startX + pathLength) { appParticles.splice(i, 1); i--; }
+    }
+
+    const count = manualParticles.length + appParticles.length;
+    if (count > 0) {
+      const positions = new Float32Array(count * 3);
+      const colors = new Float32Array(count * 3);
+
+      let ptr = 0;
+
+      manualParticles.forEach((p) => {
+        const idx = Math.floor(p.progress * 60);
+        positions[ptr * 3] = startX + (idx * (pathLength / 60));
+        positions[ptr * 3 + 1] = 3 + Math.sin(idx * 0.4) * 0.8;
+        positions[ptr * 3 + 2] = 0;
+
+        colors[ptr * 3] = 1.0;
+        colors[ptr * 3 + 1] = 0.23;
+        colors[ptr * 3 + 2] = 0.18;
+        ptr++;
+      });
+
+      appParticles.forEach((p) => {
+        positions[ptr * 3] = p.x;
+        positions[ptr * 3 + 1] = -1;
+        positions[ptr * 3 + 2] = 0;
+
+        colors[ptr * 3] = 0.2;
+        colors[ptr * 3 + 1] = 0.78;
+        colors[ptr * 3 + 2] = 0.35;
+        ptr++;
+      });
+
+      pGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      pGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+      pGeo.attributes.position.needsUpdate = true;
+      pGeo.attributes.color.needsUpdate = true;
+    }
+
+    const time = Date.now() * 0.0005;
+    camera.position.y = Math.sin(time) * 0.5;
+
+    renderer.render(scene, camera);
+  };
+
+  tick();
+}
+
+function stopThreeJS() {
+  if (animationId) cancelAnimationFrame(animationId);
+  animationId = null;
+
+  if (renderer) {
+    try {
+      renderer.dispose();
+    } catch {}
+  }
+
+  if (renderer && renderer.domElement && renderer.domElement.parentNode) {
+    renderer.domElement.parentNode.removeChild(renderer.domElement);
+  }
+
+  scene = null;
+  camera = null;
+  renderer = null;
+}
+
+// =========================
+// EVENTS
+// =========================
+if (backToStandard) backToStandard.addEventListener("click", showStandardView);
+
+if (modalClose) modalClose.addEventListener("click", closeModal);
+if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+});
 
 filterButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -609,13 +869,5 @@ filterButtons.forEach((btn) => {
   });
 });
 
-modalClose.addEventListener("click", closeModal);
-modalBackdrop.addEventListener("click", closeModal);
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal.classList.contains("open")) {
-    closeModal();
-  }
-});
-
+// INIT
 renderCards();
